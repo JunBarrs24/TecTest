@@ -1,12 +1,15 @@
 package Mocks;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import Mocks.Excepciones.ExcepcionBase;
 import Mocks.Excepciones.Fatal;
 import Mocks.Excepciones.Retryable;
 
 public class ReservadorBoletos {
 	
-	private static enum RESULTADO {
+	@VisibleForTesting
+	static enum RESULTADO {
 		EXITOSO,
 		FALLO,
 		YA_EXISTE
@@ -49,7 +52,7 @@ public class ReservadorBoletos {
 			}
 			manejadorBase.guardar(boleto);	
 		} catch (Retryable ex) {
-			return reservaBoletoInt(boleto, attempts);	
+			return reservaBoletoInt(boleto, attempts+1);	
 		} catch (Fatal fatal) {
 		    return RESULTADO.FALLO;
 		}

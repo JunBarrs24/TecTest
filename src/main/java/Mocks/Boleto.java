@@ -25,12 +25,11 @@ public class Boleto {
 	}
 	
 	public boolean tieneAsiento() {
-		return !this.isNullOrEmpty(this.NombreReservar);
+		return !this.isNullOrEmpty(this.asiento);
 	}
 	
-	
 	public boolean tieneNombre() {
-		return !this.isNullOrEmpty(this.asiento);
+		return !this.isNullOrEmpty(this.NombreReservar);
 	}
 	
 	public boolean esDelJefazo() {
